@@ -1,6 +1,6 @@
 import gradio as gr
-# from guardrail import llama_guardrail
-from guardrail import guardrailsai
+from guardrail import llama_guardrail
+# from guardrail import guardrailsai
 from model import chat
 
 with gr.Blocks() as demo:
@@ -10,8 +10,8 @@ with gr.Blocks() as demo:
     clear = gr.Button("Clear")
 
     def user_submit(message, chat_history):
-        # check = llama_guardrail(message)
-        check = guardrailsai(message)
+        check = llama_guardrail(message)
+        # check = guardrailsai(message)
 
         if isinstance(check, list) and check[0] == "unsafe":
             reason = check[1] if len(check) > 1 else "This message is not allowed."
